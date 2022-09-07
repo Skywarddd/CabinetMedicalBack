@@ -31,9 +31,9 @@ public class DeplacementService {
         return this.repo.save(deplacement);
     }
 
-    public DeplacementDao patchDeplacement(String id, Integer cout){
+    public DeplacementDao patchDeplacement(String id, DeplacementDao patchDeplacement){
         DeplacementDao deplacement = this.repo.findById(id).get();
-        deplacement.setCout(cout);
+        deplacement.setCout(patchDeplacement.getCout());
         return this.repo.save(deplacement);
     }
 

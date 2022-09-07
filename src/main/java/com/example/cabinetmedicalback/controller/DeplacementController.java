@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/deplacement")
+@CrossOrigin
 public class DeplacementController {
     private DeplacementService service;
 
@@ -38,8 +39,8 @@ public class DeplacementController {
 
     @PatchMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    public DeplacementDao patchDeplacement(@PathVariable String id, @RequestBody Integer cout){
-        return this.service.patchDeplacement(id, cout);
+    public DeplacementDao patchDeplacement(@PathVariable String id, @RequestBody DeplacementDao deplacement){
+        return this.service.patchDeplacement(id, deplacement);
     }
 
     @DeleteMapping("/{id}")
