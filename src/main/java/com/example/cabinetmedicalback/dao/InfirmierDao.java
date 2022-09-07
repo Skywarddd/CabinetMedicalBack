@@ -20,8 +20,9 @@ public class InfirmierDao {
     private String nom;
     private String prenom;
     private Integer numPro;
-    private Integer telMobile;
-    private Integer telFixe;
+    private String telMobile;
+    private String telFixe;
+    private boolean isActive = true;
 
     //uncomment pour utiliser la liste de patients en DBRef
 //    @DBRef
