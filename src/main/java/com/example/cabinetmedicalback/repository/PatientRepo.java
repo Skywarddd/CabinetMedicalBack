@@ -4,12 +4,13 @@ import com.example.cabinetmedicalback.dao.PatientDao;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PatientRepo extends MongoRepository<PatientDao, String> {
 
-    PatientDao findByNomOrPrenom(String nom, String prenom);
+    List<PatientDao> findByNomOrPrenom(String nom, String prenom);
 
-    PatientDao findByIdAndNom(String id,String nom);
 
     PatientDao findAllById(String id);
 

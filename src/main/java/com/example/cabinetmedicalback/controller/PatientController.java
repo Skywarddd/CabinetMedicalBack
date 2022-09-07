@@ -34,7 +34,7 @@ public class PatientController {
 
     @GetMapping("/name/{nom}")
     @ResponseStatus(code = HttpStatus.OK)
-    public PatientDao getPatientByName(@PathVariable String nom){
+    public List<PatientDao>  getPatientByName(@PathVariable String nom){
         return this.service.getPatientByName(nom);
     }
 
@@ -48,6 +48,7 @@ public class PatientController {
     @ResponseStatus(code = HttpStatus.OK)
     public PatientDao putPatient(@PathVariable String id, @RequestBody PatientDao item){
         return this.service.putPatient(id,item);
+
     }
 
     @DeleteMapping("/{id}")
@@ -55,4 +56,6 @@ public class PatientController {
     public PatientDao deletePatient(@PathVariable String id){
         return this.service.deletePatient(id);
     }
+
+    
 }

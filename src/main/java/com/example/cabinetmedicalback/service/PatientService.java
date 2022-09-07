@@ -31,8 +31,8 @@ public class PatientService {
         return result;
     }
 
-    public PatientDao getPatientByName(String nom) {
-        PatientDao result = this.repo.findByNomOrPrenom(nom, nom);
+    public List<PatientDao>  getPatientByName(String nom) {
+        List<PatientDao> result = this.repo.findByNomOrPrenom(nom, nom);
         return result;
     }
 
@@ -56,5 +56,7 @@ public class PatientService {
         this.repo.save(result);
         return result;
     }
+
+
 
 }
