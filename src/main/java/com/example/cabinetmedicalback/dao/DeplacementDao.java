@@ -15,7 +15,6 @@ public class DeplacementDao {
     @Id
     private String id;
     private int cout;
-
     private Date date;
 
     public DeplacementDao(){
