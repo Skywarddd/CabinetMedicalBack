@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/Patient")
+@CrossOrigin
 public class PatientController {
 
     private final PatientService service;
@@ -57,5 +58,5 @@ public class PatientController {
         return this.service.deletePatient(id);
     }
 
-    
+
 }
