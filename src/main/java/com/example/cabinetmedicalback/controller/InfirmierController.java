@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/infirmier")
+@CrossOrigin
 public class InfirmierController {
 
     private InfirmierService service;
@@ -36,9 +37,9 @@ public class InfirmierController {
     }
 
     //l'url est namefilter pour la differencier de l'url par défaut (conflit si pas de diff)
-    @GetMapping("/namefilter")
+    @GetMapping("/name/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public List<InfirmierDao> getByNomOrPrenom(@RequestBody String name) {
+    public List<InfirmierDao> getByNomOrPrenom(@PathVariable String name) {
         if(service.getByNomOrPrenom(name).isEmpty()) throw new ResponseStatusException(HttpStatus.NO_CONTENT);
         return service.getByNomOrPrenom(name);
     }

@@ -32,7 +32,7 @@ public class InfirmierService {
     }
 
     public InfirmierDao create(InfirmierDao item) {
-        return this.repo.save(item);
+        return this.repo.insert(item);
     }
 
     public InfirmierDao replace(String id, InfirmierDao item) {
