@@ -70,4 +70,9 @@ public class PatientService {
         return this.repo.save(patient.get());
     }
 
+    public PatientDao findByDeplacement(String id){
+        PatientDao patient = this.repo.findByDeplacement(id);
+        return patient;
+    }
+
 }

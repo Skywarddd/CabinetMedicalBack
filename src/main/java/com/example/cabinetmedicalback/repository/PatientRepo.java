@@ -10,8 +10,8 @@ import java.util.List;
 public interface PatientRepo extends MongoRepository<PatientDao, String> {
 
     List<PatientDao> findByNomOrPrenom(String nom, String prenom);
-
-
     PatientDao findAllById(String id);
+
+    PatientDao findByDeplacement(String id);
 
 }

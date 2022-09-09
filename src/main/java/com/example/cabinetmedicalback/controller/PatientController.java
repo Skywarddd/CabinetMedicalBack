@@ -71,4 +71,10 @@ public class PatientController {
     public PatientDao addDeplacement(@PathVariable String id, @RequestBody DeplacementDao deplacement) {
         return this.service.addDeplacement(id, deplacement);
     }
+
+    @GetMapping("/deplacement/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public PatientDao findByDeplacement(@PathVariable String id){
+        return  this.service.findByDeplacement(id);
+    }
 }
