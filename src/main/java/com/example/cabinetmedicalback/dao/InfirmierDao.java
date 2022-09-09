@@ -7,7 +7,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,7 +26,7 @@ public class InfirmierDao {
     private String telFixe;
     private boolean isActive = true;
 
-    //uncomment pour utiliser la liste de patients en DBRef
-//    @DBRef
-//    private List<PatientDAO> patients;
+    @DBRef
+    private List<DeplacementDao> deplacements = new ArrayList<>();
+
 }

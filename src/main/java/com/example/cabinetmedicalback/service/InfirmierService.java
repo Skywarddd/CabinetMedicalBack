@@ -1,6 +1,8 @@
 package com.example.cabinetmedicalback.service;
 
+import com.example.cabinetmedicalback.dao.DeplacementDao;
 import com.example.cabinetmedicalback.dao.InfirmierDao;
+import com.example.cabinetmedicalback.dao.PatientDao;
 import com.example.cabinetmedicalback.repository.InfirmierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,6 +49,12 @@ public class InfirmierService {
         aSupprimer.setActive(false);
         this.repo.save(aSupprimer);
         return "Utilisateur supprimé";
+    }
+
+    public InfirmierDao addDeplacement(String id, DeplacementDao deplacement) {
+        Optional<InfirmierDao> infirmier = this.repo.findById(id);
+        infirmier.get().getDeplacements().add(deplacement);
+        return this.repo.save(infirmier.get());
     }
 
 }

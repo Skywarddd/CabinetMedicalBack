@@ -1,5 +1,7 @@
 package com.example.cabinetmedicalback.service;
 
+import com.example.cabinetmedicalback.dao.DeplacementDao;
+import com.example.cabinetmedicalback.dao.InfirmierDao;
 import com.example.cabinetmedicalback.dao.PatientDao;
 import com.example.cabinetmedicalback.repository.PatientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +44,11 @@ public class PatientService {
 
     public PatientDao putPatient(String id, PatientDao item) {
 
-        if (!Objects.equals(item.getId(), id)) {
+        if (this.getPatientById(id).isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id non cohérente");
-        } else {
-            this.repo.save(item);
-            return item;
         }
+            item.setId(id);
+            return this.repo.save(item);
     }
 
     public PatientDao deletePatient(String id){
@@ -57,6 +58,16 @@ public class PatientService {
         return result;
     }
 
+    public PatientDao addInfirmier(String id, InfirmierDao infirmier) {
+        Optional<PatientDao> patient = this.getPatientById(id);
+        patient.get().setInfirmier(infirmier);
+        return this.repo.save(patient.get());
+    }
 
+    public PatientDao addDeplacement(String id, DeplacementDao deplacement) {
+        Optional<PatientDao> patient = this.getPatientById(id);
+        patient.get().setDeplacement(deplacement);
+        return this.repo.save(patient.get());
+    }
 
 }

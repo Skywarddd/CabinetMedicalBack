@@ -1,6 +1,8 @@
 package com.example.cabinetmedicalback.controller;
 
+import com.example.cabinetmedicalback.dao.DeplacementDao;
 import com.example.cabinetmedicalback.dao.InfirmierDao;
+import com.example.cabinetmedicalback.dao.PatientDao;
 import com.example.cabinetmedicalback.service.InfirmierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +31,7 @@ public class InfirmierController {
         return service.getAll();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<InfirmierDao> getById(@PathVariable String id) {
         if(service.getById(id).isEmpty()) throw new ResponseStatusException(HttpStatus.NO_CONTENT);
@@ -56,9 +58,15 @@ public class InfirmierController {
         return this.service.replace(id, item);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String delete(@PathVariable String id) {
         return this.service.delete(id);
+    }
+
+    @PatchMapping("/deplacement/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public InfirmierDao AddDeplacement(@PathVariable String id, @RequestBody DeplacementDao deplacement) {
+        return this.service.addDeplacement(id, deplacement);
     }
 }

@@ -1,5 +1,7 @@
 package com.example.cabinetmedicalback.controller;
 
+import com.example.cabinetmedicalback.dao.DeplacementDao;
+import com.example.cabinetmedicalback.dao.InfirmierDao;
 import com.example.cabinetmedicalback.dao.PatientDao;
 import com.example.cabinetmedicalback.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Patient")
+@RequestMapping("/patient")
 @CrossOrigin
 public class PatientController {
 
@@ -39,7 +41,7 @@ public class PatientController {
         return this.service.getPatientByName(nom);
     }
 
-    @PostMapping("/post")
+    @PostMapping("")
     @ResponseStatus(code = HttpStatus.OK)
     public PatientDao postPatient(@RequestBody PatientDao item){
         return this.service.postPatient(item);
@@ -58,5 +60,15 @@ public class PatientController {
         return this.service.deletePatient(id);
     }
 
+    @PatchMapping("/infirmier/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public PatientDao addInfirmier(@PathVariable String id, @RequestBody InfirmierDao infirmier) {
+        return this.service.addInfirmier(id, infirmier);
+    }
 
+    @PatchMapping("/deplacement/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public PatientDao addDeplacement(@PathVariable String id, @RequestBody DeplacementDao deplacement) {
+        return this.service.addDeplacement(id, deplacement);
+    }
 }

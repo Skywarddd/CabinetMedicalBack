@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
@@ -21,5 +22,11 @@ public class PatientDao {
     private String adresse;
     private String numeroSecu;
     private Boolean isActive = true;
+
+    @DBRef
+    private InfirmierDao infirmier;
+
+    @DBRef
+    private DeplacementDao deplacement;
 
 }
